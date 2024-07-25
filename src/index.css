@@ -1,0 +1,48 @@
+:root{
+    --white: #FFF;
+    --primary : #61ECBC;
+    --black : #182339;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    background-image: url("../public/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+    font-family: "Outfit", sans-serif;
+}
+
+/* estilos del contenido principal */
+.container{
+    max-width: 60rem;
+    margin: 0 auto;
+    width: 95%;
+}
+
+.app-title{
+    font-size: 3.8rem;
+    margin-top: 5rem;
+    color: var(--white);
+    line-height: .8;
+}
+
+.app-title span{
+    display: block;
+    color: var(--primary);
+    font-size: 4.4rem;
+}
+
+.content{
+    background-color: var(--white);
+    padding: 5rem 4rem;
+    margin-top: 5rem;
+    border-radius: 1rem;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+/* estilos del formulario */
