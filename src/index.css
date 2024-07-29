@@ -46,3 +46,45 @@ body{
 }
 
 /* estilos del formulario */
+
+.form{
+    padding: 1rem;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form label{
+    color: var(--black);
+    font-size: 1.8rem;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.form select{
+    padding: 1rem;
+    border-radius: 1rem;
+    border: none;
+    width: 100%;
+    background-color: #ECEBEB;
+    font-size: 1.5rem;
+}
+
+.form [type="submit"]{
+    background-color: var(--primary);
+    color: var(--black);
+    border: none;
+    padding: 1rem;
+    font-weight: 900;
+    margin-top: 2rem;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.form [type="submit"]:hover{
+    background-color: #0CB387;
+}
