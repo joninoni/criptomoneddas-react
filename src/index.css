@@ -88,3 +88,9 @@ body{
 .form [type="submit"]:hover{
     background-color: #0CB387;
 }
+
+ /* mensaje de error */
+.error{
+    font-size: 1.8rem;
+    color: var(--primary);
+}
