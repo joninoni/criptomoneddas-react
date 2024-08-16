@@ -6,7 +6,7 @@ import ErrorMessage from "./ErrorMessage"
 
 const CriptoSearchForm = () => {
 
-    const {cryptoCurrencies} = criptoStore()
+    const {cryptoCurrencies,fetchData} = criptoStore()
 
     const [pair,setPair] = useState<Pair>({
         currency : "",
@@ -31,6 +31,7 @@ const CriptoSearchForm = () => {
         }
         //paso la validacion
         setError("")
+        fetchData(pair)
     }
 
     return (
