@@ -1,10 +1,11 @@
 import { useEffect } from "react"
 import CryptoSearchForm from "./components/CryptoSearchForm"
 import { criptoStore } from "./store/store"
+import CryptoPriceDisplay from "./components/CryptoPriceDisplay"
 
 function App() {
 
-	const {fetchCrypto} = criptoStore()
+	const {result,fetchCrypto} = criptoStore()
 
 	useEffect( () => {
 		fetchCrypto()
@@ -20,6 +21,7 @@ function App() {
 
 				<div className="content">
 					<CryptoSearchForm/>
+					{!Object.values(result).includes("") && <CryptoPriceDisplay/>}
 				</div>
 			</div>
 		</>

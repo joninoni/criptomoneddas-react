@@ -94,3 +94,32 @@ body{
     font-size: 1.8rem;
     color: var(--primary);
 }
+
+/* estilos del resultado de cotizacion */
+.result-wrap{
+    margin-top: 5rem;
+}
+
+.result-wrap h2{
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.result{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.result img{
+    width: 100%;
+}
+
+.result p{
+    font-size: 1.8rem;
+}
+
+.result span{
+    font-weight: 700;
+}
