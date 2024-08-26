@@ -1,4 +1,5 @@
-import { create } from "zustand"
+import { create} from "zustand"
+import { devtools} from "zustand/middleware"
 import { CryptoCurrency, CryptoPrice, Pair } from "../types"
 import { fetchCurrentCryptoPrice, getCryptos } from "../services/CryptoService"
 
@@ -7,29 +8,43 @@ type CryptoStore = {
     fetchCrypto: () => Promise<void>
     fetchData: (pair : Pair) => Promise<void>
     result : CryptoPrice
+    loading : boolean
 }
 
 
-export const criptoStore = create<CryptoStore>( (set) =>({
+export const criptoStore = create<CryptoStore>()(
+    devtools(
+        (set) =>({
+        
+            cryptoCurrencies : [],
 
-    cryptoCurrencies : [],
+            result:{
+                IMAGEURL: "",
+                PRICE: "",
+                HIGHDAY: "",
+                LOWDAY: "",
+                CHANGEPCT24HOUR: "",
+                LASTUPDATE: "",
+            },
 
-    result:{
-        IMAGEURL: "",
-        PRICE: "",
-        HIGHDAY: "",
-        LOWDAY: "",
-        CHANGEPCT24HOUR: "",
-        LASTUPDATE: "",
-    },
+            loading : false,
 
-    fetchCrypto : async () => {
-        const cryptoCurrencies = await getCryptos()
-        set( ()=>({cryptoCurrencies}))
-    },
+            fetchCrypto : async () => {
+                const cryptoCurrencies = await getCryptos()
+                set( ()=>({cryptoCurrencies}))
+            },
 
-    fetchData : async (pair) =>{
-        const result = await fetchCurrentCryptoPrice(pair)
-        set (()=> ({result}))
-    }
-}))
+            fetchData: async (pair) => {
+                
+                set(() => ({ loading: true }));
+                
+                    const result = await fetchCurrentCryptoPrice(pair);
+                    set(() => ({
+                        result,
+                        loading: false,
+                    }));
+            }
+        }
+        )
+    )
+)

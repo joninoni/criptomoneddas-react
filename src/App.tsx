@@ -1,11 +1,14 @@
-import { useEffect } from "react"
+import { useEffect, useMemo } from "react"
 import CryptoSearchForm from "./components/CryptoSearchForm"
 import { criptoStore } from "./store/store"
 import CryptoPriceDisplay from "./components/CryptoPriceDisplay"
+import Spinner from "./components/Spinner"
 
 function App() {
 
-	const {result,fetchCrypto} = criptoStore()
+	const {result,loading,fetchCrypto} = criptoStore()
+
+	const hasResult = useMemo( ()=>!Object.values(result).includes("") ,[result])
 
 	useEffect( () => {
 		fetchCrypto()
@@ -21,7 +24,7 @@ function App() {
 
 				<div className="content">
 					<CryptoSearchForm/>
-					{!Object.values(result).includes("") && <CryptoPriceDisplay/>}
+					{loading? <Spinner/> : hasResult &&  <CryptoPriceDisplay/>}
 				</div>
 			</div>
 		</>
